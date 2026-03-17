@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Inscription - Formulaire Débutant</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+       <h1>📝 Formulaire d'Inscription</h1>
+       
+       <form action="#" method="POST" >
+           
+           <!-- Informations personnelles -->
+           <fieldset>
+               <legend>👤 Informations personnelles</legend>
+               
+               <div class="form-group">
+                   <label for="nom" class="required">Nom</label>
+                   <input 
+                       type="text" 
+                       id="nom" 
+                       name="nom" 
+                       required 
+                       placeholder="Votre nom de famille"
+                   >
+               </div>
+
+               <div class="form-group">
+                   <label for="prenom" class="required">Prénom</label>
+                   <input 
+                       type="text" 
+                       id="prenom" 
+                       name="prenom" 
+                       required 
+                       placeholder="Votre prénom"
+                   >
+               </div>
+
+               <div class="form-group">
+                   <label for="email" class="required">Email</label>
+                   <input 
+                       type="email" 
+                       id="email" 
+                       name="email" 
+                       required 
+                       placeholder="exemple@email.com"
+                   >
+                   <span class="error-message">Veuillez entrer une adresse email valide</span>
+               </div>
+
+               <div class="form-group">
+                   <label for="telephone" class="required">Téléphone</label>
+                   <input 
+                       type="tel" 
+                       id="telephone" 
+                       name="telephone" 
+                       required 
+                       pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$"
+                       placeholder="06 XX XX XX XX"
+                   >
+                   <p class="hint">Format: 06 XX XX XX XX ou +33 6 12 34 56 78</p>
+                   <span class="error-message">Numéro de téléphone français invalide</span>
+               </div>
+
+               <div class="form-group">
+                   <label for="date_naissance" class="required">Date de naissance</label>
+                   <input 
+                       type="date" 
+                       id="date_naissance" 
+                       name="date_naissance" 
+                       required
+                       max="2008-03-13"
+                   >
+                   <p class="hint">Vous devez avoir au moins 18 ans</p>
+               </div>
+           </fieldset>
+
+           <!-- Sécurité -->
+           <fieldset>
+               <legend>🔒 Sécurité</legend>
+               
+               <div class="form-group">
+                   <label for="password" class="required">Mot de passe</label>
+                   <input 
+                       type="password" 
+                       id="password" 
+                       name="password" 
+                       required 
+                       pattern="^(?=.*[A-Z])(?=.*\d).{8,}$"
+                       placeholder="Votre mot de passe sécurisé"
+                   >
+                   <p class="hint">Minimum 8 caractères, 1 majuscule et 1 chiffre</p>
+                   <span class="error-message">Le mot de passe doit contenir au moins 8 caractères, 1 majuscule et 1 chiffre</span>
+               </div>
+
+               <div class="form-group">
+                   <label for="password_confirm" class="required">Confirmer le mot de passe</label>
+                   <input 
+                       type="password" 
+                       id="password_confirm" 
+                       name="password_confirm" 
+                       required 
+                       placeholder="Répétez votre mot de passe"
+                       oninput="this.setCustomValidity(this.value !== document.getElementById('password').value ? 'Les mots de passe ne correspondent pas' : '')"
+                   >
+               </div>
+           </fieldset>
+
+           <!-- Informations complémentaires -->
+           <fieldset>
+               <legend>🌍 Informations complémentaires</legend>
+               
+               <div class="form-group">
+                   <label for="pays" class="required">Pays</label>
+                   <input 
+                       list="liste-pays" 
+                       id="pays" 
+                       name="pays" 
+                       required
+                       placeholder="Sélectionnez ou tapez votre pays"
+                   >
+                   <datalist id="liste-pays">
+                       <option value="France">
+                       <option value="Belgique">
+                       <option value="Suisse">
+                       <option value="Canada">
+                       <option value="Luxembourg">
+                       <option value="Maroc">
+                       <option value="Algérie">
+                       <option value="Tunisie">
+                   </datalist>
+               </div>
+
+               <div class="form-group">
+                   <label class="required">Genre</label>
+                   <div class="radio-group">
+                       <label>
+                           <input type="radio" name="genre" value="homme" required>
+                           Homme
+                       </label>
+                       <label>
+                           <input type="radio" name="genre" value="femme" required>
+                           Femme
+                       </label>
+                       <label>
+                           <input type="radio" name="genre" value="autre" required>
+                           Autre
+                       </label>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <label>Centres d'intérêt</label>
+                   <div class="checkbox-group">
+                       <label>
+                           <input type="checkbox" name="interets" value="sport">
+                           Sport
+                       </label>
+                       <label>
+                           <input type="checkbox" name="interets" value="musique">
+                           Musique
+                       </label>
+                       <label>
+                           <input type="checkbox" name="interets" value="lecture">
+                           Lecture
+                       </label>
+                       <label>
+                           <input type="checkbox" name="interets" value="voyage">
+                           Voyage
+                       </label>
+                       <label>
+                           <input type="checkbox" name="interets" value="technologie">
+                           Technologie
+                       </label>
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <label for="biographie">Biographie</label>
+                   <textarea 
+                       id="biographie" 
+                       name="biographie" 
+                       maxlength="500"
+                       placeholder="Parlez-nous de vous en quelques lignes..."
+                   ></textarea>
+                   <p class="hint">Maximum 500 caractères</p>
+               </div>
+
+               <div class="form-group">
+                   <label for="photo">Photo de profil</label>
+                   <input 
+                       type="file" 
+                       id="photo" 
+                       name="photo" 
+                       accept="image/*"
+                   >
+               </div>
+           </fieldset>
+
+           <!-- Validation -->
+           <fieldset>
+               <legend>✅ Validation</legend>
+               
+               <div class="form-group">
+                   <label>
+                       <input 
+                           type="checkbox" 
+                           name="cgu" 
+                           required
+                       >
+                       <span class="required">J'accepte les Conditions Générales d'Utilisation</span>
+                   </label>
+               </div>
+           </fieldset>
+
+           <button type="submit">S'inscrire</button>
+       </form>
+   </div>
+</body>
+</html>
